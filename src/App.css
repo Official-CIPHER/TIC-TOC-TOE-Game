@@ -1,0 +1,263 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0; /* Default light background */
+  color: #333; /* Default light text color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Smooth transition for dark mode */
+}
+
+h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Main game container */
+.board-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* Default light background */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Smooth transition */
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* Styling for the board row (3x3 grid) */
+.board-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 10px; /* Adds gap between squares */
+}
+
+/* Styling for the squares */
+.square {
+  width: 80px;
+  height: 80px;
+  background-color: #e4e4e4; /* Light square background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333; /* Light text color */
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.square:hover {
+  background-color: #d1d1d1;
+  transform: scale(1.05);
+}
+
+/* Winner message and play again button */
+.playBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.playBtn:hover {
+  background-color: #45a049;
+}
+
+.playBtn:active {
+  transform: scale(0.98);
+}
+
+#winner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#winner-container h3 {
+  font-size: 1.5rem;
+  color: #4CAF50;
+  margin-bottom: 10px;
+  /* Add scrolling effect to winner text */
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Ensures text doesn't go out of bounds */
+  animation: scrollWinnerText 5s linear infinite; /* Animation for scrolling text */
+  font-size: 2rem; /* Initial font size */
+  animation: scrollWinnerText 5s linear infinite, increaseFontSize 3s ease-in-out infinite; /* Scrolling and font size increase */
+}
+
+/* Scrolling animation for winner text */
+@keyframes scrollWinnerText {
+  0% {
+    transform: translateX(100%); /* Start off-screen on the right */
+  }
+  100% {
+    transform: translateX(-100%); /* End off-screen on the left */
+  }
+}
+
+/* Font size increase animation */
+@keyframes increaseFontSize {
+  0% {
+    font-size: 2rem; /* Initial font size */
+  }
+  50% {
+    font-size: 3rem; /* Font size increases to 3rem */
+  }
+  100% {
+    font-size: 2rem; /* Font size returns to 2rem */
+  }
+}
+
+/* Dark Mode Coder Theme */
+.dark-mode {
+  background-color: #181818; /* Dark background for body */
+  color: #f5f5f5; /* Light text color for readability */
+}
+
+.dark-mode .board-container {
+  background-color: #282828; /* Darker background for the board */
+  color: #f5f5f5;
+}
+
+.dark-mode h1, .dark-mode h3, .dark-mode h4 {
+  color: #f5f5f5; /* Light text color for headers */
+}
+
+.dark-mode button {
+  background-color: #7C4DFF;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.dark-mode button:hover {
+  background-color: #6A1B9A;
+  transform: scale(1.05);
+}
+
+.dark-mode button:focus {
+  outline: none;
+}
+
+.dark-mode .square {
+  background-color: #333; /* Dark background for squares */
+  color: #fff; /* White text on dark squares */
+  border: 2px solid #444; /* Slightly lighter border */
+}
+
+.dark-mode .square:hover {
+  background-color: #444; /* Lighter hover effect */
+}
+
+.dark-mode .playBtn {
+  background-color: #4CAF50;
+}
+
+.dark-mode .playBtn:hover {
+  background-color: #45a049;
+}
+
+/* Theme Toggle Button (Dark Mode) */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  border: none;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: scale(0.98);
+}
+
+.winnerPlayer {
+  font-size: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 7px;
+  border-radius: 10px;
+  background-color: orange;
+  box-shadow: #444 10px 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+  .board-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .board-row {
+    justify-content: center;
+  }
+
+  .square {
+    width: 70px;
+    height: 70px;
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .playBtn {
+    width: 100%;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .square {
+    width: 80px;
+    height: 80px;
+    font-size: 1.8rem;
+  }
+}
